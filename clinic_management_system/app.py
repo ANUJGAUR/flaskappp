@@ -91,7 +91,7 @@ def bookappointmentpage():
         msg = session['username']
         mindate,maxdate = minmaxdate()
         #sql query
-        sql="SELECT * FROM `time_master`"
+        sql="SELECT * FROM Time_Master"
         mycursor.execute(sql,)
         timedb = mycursor.fetchall()
         return render_template('bookappointment.html',msg = msg,mindate=mindate,maxdate=maxdate,timedb=timedb)
@@ -111,7 +111,7 @@ def appointmentbooking():
             mindate,maxdate = minmaxdate()
             msg = session['username']
             #sql query
-            sql="SELECT * FROM `time_master`"
+            sql="SELECT * FROM Time_Master"
             mycursor.execute(sql,)
             timedb = mycursor.fetchall()
             if len(unavaildatabase) == 0:
@@ -360,7 +360,7 @@ def exploreappointment():
     else: 
         msg = session['username']
         todaydate = str(date.today())
-        sql=sql="SELECT Booked_Appointment.a_id,Booked_Appointment.p_id,dp_id,fullname,age,gender,mobileno,a_date,a_time,Doctor_Prescription.prescription,time_master.t_id FROM Booked_Appointment LEFT JOIN Doctor_Prescription ON Booked_Appointment.a_id = Doctor_Prescription.a_id LEFT JOIN time_master ON time_master.Timing = booked_appointment.a_time WHERE Doctor_Prescription.prescription IS NULL AND a_date= %s ORDER BY time_master.t_id ASC"
+        sql=sql="SELECT Booked_Appointment.a_id,Booked_Appointment.p_id,dp_id,fullname,age,gender,mobileno,a_date,a_time,Doctor_Prescription.prescription,Time_Master.t_id FROM Booked_Appointment LEFT JOIN Doctor_Prescription ON Booked_Appointment.a_id = Doctor_Prescription.a_id LEFT JOIN Time_Master ON Time_Master.Timing = booked_appointment.a_time WHERE Doctor_Prescription.prescription IS NULL AND a_date= %s ORDER BY Time_Master.t_id ASC"
         mycursor.execute(sql,(todaydate,))
         appointmentdatabase = mycursor.fetchall()
 
