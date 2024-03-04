@@ -18,17 +18,17 @@ app.secret_key = 'your secret key'
 
 #database connection
 mydb = mysql.connector.connect(
-  host="localhost",
+  host="sql6.freesqldatabase.com",
   port=3306,
-  user="root",
-  password="",
-  database='clinic_management_system'
+  user="sql6688430",
+  password="1uxLN2gtkY",
+  database='sql6688430'
 )
 print(mydb)
 mycursor = mydb.cursor()
 
 #create table function:
-#create_tables(mycursor)
+# create_tables(mycursor)
 
 mycursor = mydb.cursor(dictionary=True)
 
